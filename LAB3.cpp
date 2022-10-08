@@ -1,68 +1,78 @@
-//
-//#include <iostream>
-//using namespace std;
-//
-//int values;
-//bool want;
-//int *DynamicArray;
-//int *newArr;
-//
-//
-//void create_array()
-//{
-//    DynamicArray = new int[values];
-//    for (int i = 0; i < values; i++) {
-//        cout << "Enter Value: ";
-//        cin >> DynamicArray[i];
-//    }
-//
-//    cout << "want print the array ? 0 OR 1 :";
-//    cin>> want ;
-//
-//    if (want == 1) {
-//        for (int i = 0 ; i < values; i++) {
-//            cout << DynamicArray[i] <<endl;
-//        }
-//    }
-//
-//
-//}
-//
-//
-//void resize()
-//{
-//
-//
-//
-//
-//    int newval;
-//    cout << "Enter new size :"<<endl;
-//    cin >> newval;
-//    newArr = new int[newval];
-//    for (int i = 0; i < newval; i++) {
-//        cout << "Enter Value: ";
-//        cin >> newArr[i];
-//    }
-//    if (want == 1) {
-//        for (int i = 0 ; i < values + newval; i++) {
-//            cout <<DynamicArray[i]<<" ";
-//            cout <<newArr[i]<<" ";
-//        }
-//
-//        
-//        
-//    }
-//
-//}
-//
-//
-//int main()
-//
-//{
-//    cout <<"How many integer you want ?"<<endl;
-//    cin >> values;
-//    create_array();
-//    resize();
-//}
-//
-//
+#include <vector>
+#include <iostream>
+
+using namespace std;
+std::vector< int > dyn_arr;
+
+
+int element;
+
+
+
+class dyn_array
+{
+    public:
+    bool want;
+    int values;
+    void create_array();
+    void resize();
+
+    
+};
+
+
+void dyn_array::create_array()
+{
+
+    for (int i = 0 ; i < element; i++) {
+        cout << "Enter value : ";
+        cin >> values;
+        dyn_arr.push_back(values);
+    }
+    
+    for (int  i = 0; i < element; i++) {
+        cout << dyn_arr[i]<<" ";
+    }
+    
+    cout << endl;
+    
+}
+
+
+void dyn_array::resize()
+{
+    
+    cout << "Want to resize ?: 0 OR 1 :"<<endl;
+    cin >> want;
+    if (want == 1) {
+        int newelemnt;
+        int newvalues;
+        cout << "PLease Enter how many int you want :"<<endl;
+        cin >> newelemnt;
+        for (int i = 0 ; i < newelemnt; i++) {
+            cout << "Enter value : ";
+            cin>> newvalues;
+            dyn_arr.push_back(newvalues);
+        }
+        
+        for (int j = 0 ; j < (newelemnt + element); j++) {
+            cout << "New array :" << dyn_arr[j] << endl;
+        }
+    }
+    
+}
+
+
+
+
+int main()
+{
+    dyn_array obj;
+    cout << "PLease Enter how many int you want :"<<endl;
+    cin>>element;
+    obj.create_array();
+    obj.resize();
+    
+    return 0;
+    
+}
